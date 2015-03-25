@@ -65,7 +65,7 @@ module.exports = function(grunt) {
 				path: 'http://localhost:8081'
 			}
 		}, copy: {
-			dist: {
+			ngwp: {
 				files: [{
 					expand: true,
 					cwd: 'src',
@@ -73,6 +73,21 @@ module.exports = function(grunt) {
 					dest: 'dist',
 					filter: 'isFile'
 				}]
+			}, bootstrap_css: {
+				expand: true,
+				cwd: 'bower_components/bootstrap/dist/css',
+				src: '**/*',
+				dest: 'dist/vendor/bootstrap/css',
+				filter: 'isFile'
+			}, bootstrap_fonts: {
+				expand: true,
+				cwd: 'bower_components/bootstrap/dist/fonts',
+				src: '**/*',
+				dest: 'dist/vendor/bootstrap/fonts',
+				filter: 'isFile'
+			}, bootstrap_js: {
+				src: 'bower_components/bootstrap/dist/js/bootstrap.min.js',
+				dest: 'dist/vendor/bootstrap/js/bootstrap.min.js',
 			}
 		}
 	});
