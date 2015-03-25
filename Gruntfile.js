@@ -66,13 +66,11 @@ module.exports = function(grunt) {
 			}
 		}, copy: {
 			ngwp: {
-				files: [{
-					expand: true,
-					cwd: 'src',
-					src: '**/*',
-					dest: 'dist',
-					filter: 'isFile'
-				}]
+				expand: true,
+				cwd: 'src',
+				src: '**/*',
+				dest: 'dist',
+				filter: 'isFile'
 			}, bootstrap: {
 				expand: true,
 				cwd: 'node_modules/bootstrap/dist',
