@@ -1,0 +1,17 @@
+{
+	"name": "ngwp",
+	"version": "0.0.1",
+	"description": "AngularJS-powered front-end for Wordpress",
+	"author": "Robert Hodgen <roberthodgen@gmail.com>",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/roberthodgen/ngwp.git"
+	},
+	"bugs": {
+		"url": "https://github.com/roberthodgen/ngwp/issues"
+	}, "devDependencies": {
+		"grunt": "~0.4.5",
+		"grunt-contrib-jshint": "~0.10.0",
+		"grunt-contrib-uglify": "~0.5.0"
+  }
+}
