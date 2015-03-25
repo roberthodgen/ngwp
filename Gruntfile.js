@@ -73,21 +73,24 @@ module.exports = function(grunt) {
 					dest: 'dist',
 					filter: 'isFile'
 				}]
-			}, bootstrap_css: {
+			}, bootstrap: {
 				expand: true,
-				cwd: 'bower_components/bootstrap/dist/css',
+				cwd: 'bower_components/bootstrap/dist',
 				src: '**/*',
-				dest: 'dist/vendor/bootstrap/css',
+				dest: 'dist/vendor/bootstrap',
 				filter: 'isFile'
-			}, bootstrap_fonts: {
+			}, jquery: {
 				expand: true,
-				cwd: 'bower_components/bootstrap/dist/fonts',
+				cwd: 'bower_components/jquery/dist',
 				src: '**/*',
-				dest: 'dist/vendor/bootstrap/fonts',
+				dest: 'dist/vendor/jquery',
 				filter: 'isFile'
-			}, bootstrap_js: {
-				src: 'bower_components/bootstrap/dist/js/bootstrap.min.js',
-				dest: 'dist/vendor/bootstrap/js/bootstrap.min.js',
+			}, angular: {
+				expand: true,
+				cwd: 'bower_components/angular',
+				src: '**/*',
+				dest: 'dist/vendor/angular',
+				filter: 'isFile'
 			}
 		}
 	});
