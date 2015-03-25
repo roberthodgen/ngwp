@@ -75,21 +75,27 @@ module.exports = function(grunt) {
 				}]
 			}, bootstrap: {
 				expand: true,
-				cwd: 'bower_components/bootstrap/dist',
+				cwd: 'node_modules/bootstrap/dist',
 				src: '**/*',
 				dest: 'dist/vendor/bootstrap',
 				filter: 'isFile'
 			}, jquery: {
 				expand: true,
-				cwd: 'bower_components/jquery/dist',
+				cwd: 'node_modules/jquery/dist',
 				src: '**/*',
 				dest: 'dist/vendor/jquery',
 				filter: 'isFile'
 			}, angular: {
 				expand: true,
-				cwd: 'bower_components/angular',
+				cwd: 'node_modules/angular',
 				src: '**/*',
 				dest: 'dist/vendor/angular',
+				filter: 'isFile'
+			}, angular_route: {
+				expand: true,
+				cwd: 'node_modules/angular-route',
+				src: '**/*',
+				dest: 'dist/vendor/angular-route',
 				filter: 'isFile'
 			}
 		}
