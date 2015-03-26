@@ -48,7 +48,13 @@
 
 		$stateProvider.state('main.home', {
 			url: '',
-			templateUrl: '/ngwp/templates/home.html'
+			templateUrl: '/ngwp/templates/home.html',
+			controller: 'archiveCtrl',
+			resolve: {
+				posts: ['apiService', function(apiService) {
+					return apiService.fetchPosts();
+				}]
+			}
 		});
 
 
