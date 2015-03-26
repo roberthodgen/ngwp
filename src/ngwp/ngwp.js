@@ -1,6 +1,7 @@
 (function() {
 
 	var app = angular.module('ngwp', [
+		'ngSanitize',
 		'ui.router',		// Angular UI Router via https://github.com/angular-ui/ui-router
 		'ngwp.rootCtrl',
 		'ngwp.blogCtrl',
@@ -15,15 +16,8 @@
 			templateUrl: '/ngwp/templates/main.html',
 			controller: 'blogCtrl',
 			resolve: {
-				blog: ['$q', function($q) {
-					var defer = $q.defer();
-
-					var blog = {
-						name: "Robert's blog"
-					};
-					defer.resolve(blog);
-
-					return defer.promise;
+				blog: ['apiService', function(apiService) {
+					return apiService.fetchBlog();
 				}]
 			}
 		});

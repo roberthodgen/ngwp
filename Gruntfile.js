@@ -86,6 +86,12 @@ module.exports = function(grunt) {
 				src: '**/*',
 				dest: 'dist/vendor/angular-ui-router',
 				filter: 'isFile'
+			}, angular_sanitize: {
+				expand: true,
+				cwd: 'node_modules/angular-sanitize',
+				src: '**/*',
+				dest: 'dist/vendor/angular-sanitize',
+				filter: 'isFile'
 			}
 		}
 	});
