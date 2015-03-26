@@ -5,7 +5,7 @@
 	app.directive('ngwpPosts', function() {
 		return {
 			restrict: 'EA',
-			templateUrl: '/ngwp/templates/posts.html',
+			templateUrl: '/ngwp/templates/ngwp-posts.html',
 			controller: ['$scope', 'apiService', function($scope, apiService) {
 				$scope.init = function() {
 					$scope.posts = [];

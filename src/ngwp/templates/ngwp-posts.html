@@ -1,0 +1,6 @@
+<div class="post" ng-repeat="post in posts" style="margin-bottom:40px;">
+	<h1><a ui-sref="main.post({ postId: post.slug })">{{ post.title }}</a></h1>
+	<p>Written by {{ post.author.name }} on {{ post.date_gmt | date:'medium' }}.</p>
+	<hr>
+	<div ng-bind-html="post.content"></div>
+</div>

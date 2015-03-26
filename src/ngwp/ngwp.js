@@ -12,8 +12,17 @@
 
 	app.config(['$stateProvider', function($stateProvider) {
 
+
+		/**
+		 *	Main
+		 *
+		 *	All routes inherit from `main`, this loads your blog and makes it available on subsequent child scopes.
+		 *
+		 */
+
 		$stateProvider.state('main', {
 			url: '/',
+			abstract: true,
 			templateUrl: '/ngwp/templates/main.html',
 			controller: 'blogCtrl',
 			resolve: {
@@ -23,7 +32,19 @@
 			}
 		});
 
-		$stateProvider.state('main.pages', {
+		$stateProvider.state('main.home', {
+			url: '',
+			templateUrl: '/ngwp/templates/home.html'
+		});
+
+
+		/**
+		 *	main.page
+		 *
+		 *	Displays a single page.
+		 */
+
+		$stateProvider.state('main.page', {
 			url: '^/pages/:pageId',
 			templateUrl: '/ngwp/templates/page.html',
 			controller: 'pageCtrl',
@@ -33,6 +54,11 @@
 				}]
 			}
 		});
+
+
+
+
+
 
 		$stateProvider.state('api-test', {
 			url: '/api-test',
