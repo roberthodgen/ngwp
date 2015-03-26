@@ -1,9 +1,17 @@
 # ngwp
 
 
+#### 
+
 #### Development environment
 
-To get the development rup and running (i.e. use it):
+Prerequisites:
+
+- npm, available from [Node.js](https://nodejs.org/)
+- Grunt `npm install -g grunt`
+
+
+To get the development server up and running, i.e. how to develop in it:
 
 1. Ensure a build is completed via grunt: `grunt b`
 2. Start the express server: `node express.js`
