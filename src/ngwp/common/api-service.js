@@ -5,6 +5,7 @@
 	app.service('apiService', ['$http', 'API_ENDPOINT', function($http, API_ENDPOINT) {
 
 		this.fetchBlog = function() {
+			console.log('[apiService] fetchBlog(): Called.');
 			return $http({
 				method: 'GET',
 				url: API_ENDPOINT
@@ -32,6 +33,7 @@
 		};
 
 		this.fetchPosts = function() {
+			console.log('[apiService] fetchPosts(): Called.');
 			return $http({
 				method: 'GET',
 				url: API_ENDPOINT + 'posts'
@@ -174,6 +176,35 @@
 			}, function(response) {
 				// Error
 				console.log('[apiService] fetchCommentsByPostId(): Request error: '+response.status);
+				return {
+					error: true,
+					status: response.status
+				};
+			});
+		};
+
+		// Return all categories
+		this.fetchCategories = function() {
+			console.log('[apiService] fetchCategories(): Called.');
+			return $http({
+				method: 'GET',
+				url: API_ENDPOINT + 'taxonomies/category/terms'
+			}).then(function(response) {
+				// HTTP 200-299 Status
+				if (angular.isArray(response.data) && response.status === 200) {
+					// Success
+					console.log('[apiService] fetchCategories(): Fetch success.');
+					return response.data;
+				} else {
+					// Error
+					console.log('[apiService] fetchCategories(): Error reading response.');
+					return {
+						error: true
+					};
+				}
+			}, function(response) {
+				// Error
+				console.log('[apiService] fetchCategories(): Request error: '+response.status);
 				return {
 					error: true,
 					status: response.status

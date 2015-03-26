@@ -10,7 +10,8 @@
 		'ngwp.apiService',
 		'ngwp.posts',	// ngwpPosts directive
 		'ngwp.footer',
-		'ngwp.comments'
+		'ngwp.comments',
+		'ngwp.categories'
 	]);
 
 	app.config(['$stateProvider', function($stateProvider) {

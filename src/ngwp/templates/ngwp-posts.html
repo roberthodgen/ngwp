@@ -1,4 +1,4 @@
-<div class="post" ng-repeat="post in posts" style="margin-bottom:40px;">
+<div class="post" ng-repeat="post in posts" style="margin-bottom:60px;">
 	<h1><a ui-sref="main.post({ postId: post.ID })">{{ post.title }}</a></h1>
 	<ul class="list-inline text-muted">
 		<li><span class="glyphicon glyphicon-calendar"></span> {{ post.date | date:'mediumDate' }}</li>
