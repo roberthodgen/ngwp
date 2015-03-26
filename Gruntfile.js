@@ -95,6 +95,12 @@ module.exports = function(grunt) {
 				src: '**/*',
 				dest: 'dist/vendor/angular-route',
 				filter: 'isFile'
+			}, angular_ui_router: {
+				expand: true,
+				cwd: 'node_modules/angular-ui-router/release',
+				src: '**/*',
+				dest: 'dist/vendor/angular-ui-router',
+				filter: 'isFile'
 			}
 		}
 	});
