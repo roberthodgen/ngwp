@@ -4,7 +4,7 @@
 
 	app.controller('rootCtrl', ['$scope', function($scope) {
 		$scope.init = function() {
-
+			console.log('[rootCtrl] $scope.init(): Called.');
 		};
 
 
