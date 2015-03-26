@@ -14,22 +14,23 @@
 			templateUrl: '/ngwp/templates/main.html',
 			controller: 'blogCtrl',
 			resolve: {
-				blog: ['apiService', function(apiService) {
-					return apiService.fetchBlog().then(function(response) {
-						if (!response.error) {
-							return response;
-						} else {
-							alert('Could not load blog.');
-							return null;
-						}
-					});
+				blog: ['$q', function($q) {
+					var defer = $q.defer();
+
+					var blog = {
+						name: "Robert's blog"
+					};
+					defer.resolve(blog);
+
+					return defer.promise;
 				}]
 			}
 		});
 
 		$stateProvider.state('test', {
 			url: '/test',
-			templateUrl: '/ngwp/templates/main.html'
+			templateUrl: '/ngwp/templates/main.html',
+			controller: 'blogCtrl'
 		});
 
 	}]);
