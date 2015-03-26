@@ -1,7 +1,7 @@
 {
   "name": "ngwp",
   "version": "0.0.1",
-  "description": "AngularJS-powered front-end for Wordpress",
+  "description": "AngularJS-powered front-end for WordPress",
   "site": "https://github.com/roberthodgen/ngwp",
   "license": "To be determined.",
   "author": {
