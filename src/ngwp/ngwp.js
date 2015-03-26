@@ -27,6 +27,17 @@
 			}
 		});
 
+		$stateProvider.state('api-test', {
+			url: '/api-test',
+			templateUrl: '/ngwp/templates/main.html',
+			controller: 'blogCtrl',
+			resolve: {
+				blog: ['apiService', function(apiService) {
+					return apiService.fetchBlog();
+				}]
+			}
+		});
+
 		$stateProvider.state('test', {
 			url: '/test',
 			templateUrl: '/ngwp/templates/main.html',
