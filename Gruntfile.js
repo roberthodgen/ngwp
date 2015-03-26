@@ -49,13 +49,11 @@ module.exports = function(grunt) {
 				}
 			}
 		}, connect: {
-			server: {
-				options: {
-					hostname: "localhost",
-					port: 8081,
-					base: 'dist',
-					keepalive: true
-				}
+			options: {
+				hostname: "localhost",
+				port: 8081,
+				base: 'dist',
+				keepalive: true
 			}
 		}, clean: {
 			build: 'dist/*',
