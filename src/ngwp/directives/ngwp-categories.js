@@ -2,6 +2,11 @@
 
 	var app = angular.module('ngwp.categories', ['ngwp.apiService']);
 
+
+	/**
+	 *	Fetches and displays the blog's categories.
+	 */
+
 	app.directive('ngwpCategoriesList', function() {
 		return {
 			restrict: 'EA',

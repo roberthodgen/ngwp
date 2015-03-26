@@ -1,28 +1,17 @@
 (function() {
 
-	var app = angular.module('ngwp.posts', ['ngwp.apiService']);
+	var app = angular.module('ngwp.posts', []);
+
+
+	/**
+	 *	Loops through the parent controller's `$scope.posts`;
+	 *	displaying each post sequentially.
+	 */
 
 	app.directive('ngwpPosts', function() {
 		return {
 			restrict: 'EA',
-			templateUrl: '/ngwp/templates/ngwp-posts.html',
-			controller: ['$scope', 'apiService', function($scope, apiService) {
-				$scope.init = function() {
-					$scope.posts = [];
-
-					apiService.fetchPosts().then(function(response) {
-						if (!response.error) {
-							$scope.posts = response;
-						} else {
-							alert('Error loading posts.');
-						}
-					});
-				};
-
-
-				// Init
-				$scope.init();
-			}]
+			templateUrl: '/ngwp/templates/ngwp-posts.html'
 		};
 	});
 

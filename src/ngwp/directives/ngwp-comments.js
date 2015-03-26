@@ -2,6 +2,12 @@
 
 	var app = angular.module('ngwp.comments', ['ngwp.apiService']);
 
+
+	/**
+	 *	Fetches the comments for the parent controller's `$scope.post`;
+	 *	will display each comment, if any are found.
+	 */
+
 	app.directive('ngwpComments', function() {
 		return {
 			restrict: 'EA',

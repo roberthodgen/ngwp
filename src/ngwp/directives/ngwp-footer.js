@@ -1,6 +1,11 @@
 (function() {
 
-	var app = angular.module('ngwp.footer', ['ngwp.apiService']);
+	var app = angular.module('ngwp.footer', []);
+
+
+	/**
+	 *	Simply includes a footer template.
+	 */
 
 	app.directive('ngwpFooter', function() {
 		return {
