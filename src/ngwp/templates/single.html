@@ -1,5 +1,22 @@
 <h1>{{ post.title }}</h1>
-<p>Written by {{ post.author.name }} on {{ post.date_gmt | date:'medium' }}.</p>
+<ul class="list-inline">
+	<li><span class="glyphicon glyphicon-calendar"></span> {{ post.date | date:'mediumDate' }}</li>
+	<li><span class="glyphicon glyphicon-user"></span> {{ post.author.name }}</li>
+	<li ng-if="post.terms.category">
+		<ul class="list-inline">
+			<li><span class="glyphicon glyphicon-folder-open"></span> Category:</li>
+			<li ng-repeat="category in post.terms.category"><a href="#">{{ category.name }}</a></li>
+		</ul>
+	</li>
+	<li ng-if="post.terms.post_tag">
+		<ul class="list-inline">
+			<li><span class="glyphicon glyphicon-tags"></span> Tags:</li>
+			<li ng-repeat="tag in post.terms.post_tag"><a href="#">{{ tag.name }}</a></li>
+		</ul>
+	</li>
+</ul>
 <hr>
 
 <div ng-bind-html="post.content"></div>
+
+<ngwp-comments></ngwp-comments>

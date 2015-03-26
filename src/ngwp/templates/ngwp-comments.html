@@ -1,0 +1,10 @@
+<h2>Comments</h2>
+
+<hr>
+
+<div class="comment" ng-repeat="comment in comments">
+	<p><strong>{{ comment.author.name }}:</strong></p>
+	<p ng-bind-html="comment.content"></p>
+
+	<hr>
+</div>

@@ -9,7 +9,8 @@
 		'ngwp.singleCtrl',
 		'ngwp.apiService',
 		'ngwp.posts',	// ngwpPosts directive
-		'ngwp.footer'
+		'ngwp.footer',
+		'ngwp.comments'
 	]);
 
 	app.config(['$stateProvider', function($stateProvider) {

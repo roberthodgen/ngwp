@@ -114,6 +114,7 @@
 			});
 		};
 
+		// Not currently used
 		this.fetchPostBySlug = function(postSlug) {
 			console.log('[apiService] fetchPostBySlug(): Called with `postSlug`: '+postSlug);
 			return $http({
@@ -145,6 +146,34 @@
 			}, function(response) {
 				// Error
 				console.log('[apiService] fetchPostBySlug(): Request error: '+response.status);
+				return {
+					error: true,
+					status: response.status
+				};
+			});
+		};
+
+		this.fetchCommentsByPostId = function(postId) {
+			console.log('[apiService] fetchCommentsByPostId(): Called with `postId`: '+postId);
+			return $http({
+				method: 'GET',
+				url: API_ENDPOINT + 'posts/' + postId + '/comments'
+			}).then(function(response) {
+				// HTTP 200-299 Status
+				if (angular.isObject(response.data) && response.status === 200) {
+					// Success
+					console.log('[apiService] fetchCommentsByPostId(): Fetch success.');
+					return response.data;
+				} else {
+					// Error
+					console.log('[apiService] fetchCommentsByPostId(): Error reading response.');
+					return {
+						error: true
+					};
+				}
+			}, function(response) {
+				// Error
+				console.log('[apiService] fetchCommentsByPostId(): Request error: '+response.status);
 				return {
 					error: true,
 					status: response.status
