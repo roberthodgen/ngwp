@@ -31,6 +31,33 @@
 			});
 		};
 
+		this.fetchPosts = function() {
+			return $http({
+				method: 'GET',
+				url: API_ENDPOINT + 'posts'
+			}).then(function(response) {
+				// HTTP 200-299 Status
+				if (angular.isArray(response.data) && response.status === 200) {
+					// Success
+					console.log('[apiService] fetchPosts(): Fetch success.');
+					return response.data;
+				} else {
+					// Error
+					console.log('[apiService] fetchPosts(): Error reading response.');
+					return {
+						error: true
+					};
+				}
+			}, function(response) {
+				// Error
+				console.log('[apiService] fetchPosts(): Request error: '+response.status);
+				return {
+					error: true,
+					status: response.status
+				};
+			});
+		};
+
 	}]);
 
 })();

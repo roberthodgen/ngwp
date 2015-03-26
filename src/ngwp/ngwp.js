@@ -4,7 +4,8 @@
 		'ui.router',		// Angular UI Router via https://github.com/angular-ui/ui-router
 		'ngwp.rootCtrl',
 		'ngwp.blogCtrl',
-		'ngwp.apiService'
+		'ngwp.apiService',
+		'ngwp.posts'	// ngwpPosts directive
 	]);
 
 	app.config(['$stateProvider', function($stateProvider) {
