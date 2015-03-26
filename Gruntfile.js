@@ -4,10 +4,8 @@ module.exports = function(grunt) {
 	// Load Grunt tasks
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
-	grunt.loadNpmTasks('grunt-contrib-connect');
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-copy');
-	grunt.loadNpmTasks('grunt-open');
 
 	// Project configuration.
 	grunt.initConfig({
@@ -48,20 +46,9 @@ module.exports = function(grunt) {
 					document: true
 				}
 			}
-		}, connect: {
-			options: {
-				hostname: "localhost",
-				port: 8081,
-				base: 'dist',
-				keepalive: true
-			}
 		}, clean: {
 			build: 'dist/*',
 			release: 'dist/*'
-		}, open: {
-			server: {
-				path: 'http://localhost:8081'
-			}
 		}, copy: {
 			ngwp: {
 				expand: true,
@@ -106,10 +93,8 @@ module.exports = function(grunt) {
 	// Grunt Tasks
 	grunt.registerTask('default', ['jshint']);
 	grunt.registerTask('build', ['copy', 'uglify']);
-	grunt.registerTask('run', ['open', 'connect']);
 
 	// Shortcuts
 	grunt.registerTask('b', 'build');
 	grunt.registerTask('c', 'clean');
-	grunt.registerTask('r', 'run');
 };
