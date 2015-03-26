@@ -13,8 +13,8 @@
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li ui-sref-active="active"><a ui-sref="main">Home</a></li>
-				<li><a href="main.">About</a></li>
+				<li ui-sref-active="active"><a ui-sref="main.pages({ pageId: 'about' })">About</a></li>
+				<li ui-sref-active="active"><a ui-sref="main.pages({ pageId: 'sample-page' })">Sample Page</a></li>
 			</ul>
 		</div><!-- /.navbar-collapse -->
 	</div><!-- /.container -->
@@ -24,8 +24,7 @@
 	<div class="row">
 		<div class="col-sm-8">
 
-			<!-- <ngwp-posts></ngwp-posts> includes uses the template file /ngwp/templates/posts.html -->
-			<ngwp-posts></ngwp-posts>
+			<ui-view></ui-view>
 
 		</div>
 		<div class="col-sm-4">

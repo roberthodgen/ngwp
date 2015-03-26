@@ -5,6 +5,7 @@
 		'ui.router',		// Angular UI Router via https://github.com/angular-ui/ui-router
 		'ngwp.rootCtrl',
 		'ngwp.blogCtrl',
+		'ngwp.pageCtrl',
 		'ngwp.apiService',
 		'ngwp.posts'	// ngwpPosts directive
 	]);
@@ -18,6 +19,17 @@
 			resolve: {
 				blog: ['apiService', function(apiService) {
 					return apiService.fetchBlog();
+				}]
+			}
+		});
+
+		$stateProvider.state('main.pages', {
+			url: '^/pages/:pageId',
+			templateUrl: '/ngwp/templates/page.html',
+			controller: 'pageCtrl',
+			resolve: {
+				page: ['$stateParams', 'apiService', function($stateParams, apiService) {
+					return apiService.fetchPage($stateParams.pageId);
 				}]
 			}
 		});

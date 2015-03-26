@@ -58,6 +58,34 @@
 			});
 		};
 
+		this.fetchPage = function(pageId) {
+			console.log('[apiService] fetchPage(): Called with `pageId`: '+pageId);
+			return $http({
+				method: 'GET',
+				url: API_ENDPOINT + 'pages/' + pageId
+			}).then(function(response) {
+				// HTTP 200-299 Status
+				if (angular.isObject(response.data) && response.status === 200) {
+					// Success
+					console.log('[apiService] fetchPage(): Fetch success.');
+					return response.data;
+				} else {
+					// Error
+					console.log('[apiService] fetchPage(): Error reading response.');
+					return {
+						error: true
+					};
+				}
+			}, function(response) {
+				// Error
+				console.log('[apiService] fetchPage(): Request error: '+response.status);
+				return {
+					error: true,
+					status: response.status
+				};
+			});
+		};
+
 	}]);
 
 })();
