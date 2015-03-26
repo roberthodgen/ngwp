@@ -92,7 +92,7 @@ module.exports = function(grunt) {
 
 	// Grunt Tasks
 	grunt.registerTask('default', ['jshint']);
-	grunt.registerTask('build', ['copy', 'uglify']);
+	grunt.registerTask('build', ['jshint', 'copy', 'uglify']);
 
 	// Shortcuts
 	grunt.registerTask('b', 'build');
