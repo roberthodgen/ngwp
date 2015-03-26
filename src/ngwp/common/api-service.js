@@ -212,6 +212,38 @@
 			});
 		};
 
+		// Return posts by category
+		this.fetchPostsByCategoryId = function(categoryId) {
+			console.log('[apiService] fetchPostsByCategoryId(): Called with `categoryId`: '+categoryId);
+			return $http({
+				method: 'GET',
+				url: API_ENDPOINT + 'posts',
+				params: {
+					'filter[cat]': categoryId
+				}
+			}).then(function(response) {
+				// HTTP 200-299 Status
+				if (angular.isArray(response.data) && response.status === 200) {
+					console.log('[apiService] fetchPostsByCategoryId(): Fetch success.');
+					// Success
+					return response.data;
+				} else {
+					// Error
+					console.log('[apiService] fetchPostsByCategoryId(): Error reading response.');
+					return {
+						error: true
+					};
+				}
+			}, function(response) {
+				// Error
+				console.log('[apiService] fetchPostsByCategoryId(): Request error: '+response.status);
+				return {
+					error: true,
+					status: response.status
+				};
+			});
+		};
+
 	}]);
 
 })();

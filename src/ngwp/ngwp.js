@@ -7,6 +7,7 @@
 		'ngwp.blogCtrl',
 		'ngwp.pageCtrl',
 		'ngwp.singleCtrl',
+		'ngwp.archiveCtrl',
 		'ngwp.apiService',
 		'ngwp.posts',	// ngwpPosts directive
 		'ngwp.footer',
@@ -85,6 +86,26 @@
 				}]
 			}
 		});
+
+
+		/**
+		 *	main.category
+		 *
+		 *	Displays a list of posts belonging to a given category.
+		 */
+
+		$stateProvider.state('main.category', {
+			url: '^/category/:categoryId',
+			templateUrl: '/ngwp/templates/archive.html',
+			controller: 'archiveCtrl',
+			resolve: {
+				posts: ['$stateParams', 'apiService', function($stateParams, apiService) {
+					return apiService.fetchPostsByCategoryId($stateParams.categoryId);
+				}]
+			}
+		});
+
+		
 
 
 
