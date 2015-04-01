@@ -13,6 +13,6 @@
 	*	NOTE: Should always end in trailing slash!
 	*/
 
-	app.constant('API_ENDPOINT', '/wp-json/');
+	app.constant('API_ENDPOINT', 'http://wp-backend.hodgen.cc/wp-json/');
 
 })();
