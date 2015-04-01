@@ -25,3 +25,8 @@ To get the development server up and running, i.e. how to develop in it:
 
 - We cannot get the number of comments on the main posts object. In the works, WP-API: https://github.com/WP-API/WP-API/pull/848
 
+
+#### Plugins
+
+1. [WP-API](https://github.com/WP-API/WP-API) - Backend API
+2. [jose-api](https://github.com/Shelob9/josie-api) - Backend API helper plugin
