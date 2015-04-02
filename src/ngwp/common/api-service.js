@@ -123,7 +123,8 @@
 				method: 'GET',
 				url: API_ENDPOINT + 'posts',
 				params: {
-					'filter[name]': postSlug
+					'filter[name]': postSlug,
+					'filter[post_type]': 'post'
 				}
 			}).then(function(response) {
 				// HTTP 200-299 Status

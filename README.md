@@ -21,6 +21,17 @@ To get the development server up and running, i.e. how to develop in it:
 4. Point ngwp to your local WordPress install by setting the constant in `/src/ngwp/common/api-endpoint.js` to it's URL.
 
 
+#### Premise
+
+The goal behind this project is to remove the front-end from the back-end WordPress installation. By utilizing [WP-API](https://github.com/WP-API/WP-API) and other plugins you can turn your WordPress installation into a back-end API endpoint.
+
+By decoupling front-and back-ends this project aims to:
+
+- Make theme development easier--no PHP!
+- Enable back-end-as-a-service for WordPress (i.e. WordPress is installed on a different server than your front-end files)
+- Speedier blogs and websites (e.g. CDN for your front-end and caching of API requests)
+
+
 #### Current limitations
 
 - We cannot get the number of comments on the main posts object. In the works, WP-API: https://github.com/WP-API/WP-API/pull/848

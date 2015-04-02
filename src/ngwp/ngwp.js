@@ -15,6 +15,8 @@
 		'ngwp.categories'
 	]);
 
+
+	// TODO: transition BACK to Angular's built in router...
 	app.config(['$stateProvider', function($stateProvider) {
 
 
