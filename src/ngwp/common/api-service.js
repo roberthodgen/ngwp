@@ -2,7 +2,7 @@
 
 	var app = angular.module('ngwp.apiService', ['ngwp.apiEndpoint']);
 
-	app.service('apiService', ['$http', 'API_ENDPOINT', function($http, API_ENDPOINT) {
+	app.service('apiService', ['$http', '$q', 'API_ENDPOINT', function($http, $q, API_ENDPOINT) {
 
 		this.fetchBlog = function() {
 			console.log('[apiService] fetchBlog(): Called.');
@@ -238,6 +238,53 @@
 			}, function(response) {
 				// Error
 				console.log('[apiService] fetchPostsByCategoryId(): Request error: '+response.status);
+				return {
+					error: true,
+					status: response.status
+				};
+			});
+		};
+
+		// Test for Routes
+		this.fetchRoutes = function() {
+			var deferred = $q.defer();
+
+			deferred.resolve([
+				{
+					url: '/about-2',
+					template: 'single',
+					endpoint: 'pages/about-2',
+					params: {
+						
+					}
+				}
+			]);
+
+			return deferred.promise;
+		};
+
+		// Fetchf rom API Endpoint
+		this.fetchFromEndpoint = function(endpointUri, params) {
+			return $http({
+				method: 'GET',
+				url: API_ENDPOINT + endpointUri,
+				params: params
+			}).then(function(response) {
+				// HTTP 200-299 Status
+				if (angular.isArray(response.data) && response.status === 200) {
+					console.log('[apiService] fetchFromEndpoint(): Fetch success.');
+					// Success
+					return response.data;
+				} else {
+					// Error
+					console.log('[apiService] fetchFromEndpoint(): Error reading response.');
+					return {
+						error: true
+					};
+				}
+			}, function(response) {
+				// Error
+				console.log('[apiService] fetchFromEndpoint(): Request error: '+response.status);
 				return {
 					error: true,
 					status: response.status

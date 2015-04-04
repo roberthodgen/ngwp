@@ -23,8 +23,8 @@
 </head>
 <body>
 
-	<!-- The following <ui-view></ui-view> will house all our templates. See /ngwp/templates/main.html -->
-	<ui-view></ui-view>
+	<!-- The following <ng-view></ng-view> will house all our templates. See /ngwp/templates/main.html -->
+	<ng-view></ng-view>
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="/vendor/jquery/jquery.min.js"></script>
@@ -34,12 +34,11 @@
 
 	<!-- AngularJS -->
 	<script src="/vendor/angular/angular.min.js"></script>
-	<script src="/vendor/angular-ui-router/angular-ui-router.min.js"></script>
+	<script src="/vendor/angular-route/angular-route.min.js"></script>
 	<script src="/vendor/angular-sanitize/angular-sanitize.min.js"></script>
 	<script src="/ngwp/ngwp.js"></script>
 	<script src="/ngwp/controllers/root-ctrl.js"></script>
 	<script src="/ngwp/controllers/blog-ctrl.js"></script>
-	<script src="/ngwp/controllers/page-ctrl.js"></script>
 	<script src="/ngwp/controllers/single-ctrl.js"></script>
 	<script src="/ngwp/controllers/archive-ctrl.js"></script>
 	<script src="/ngwp/directives/ngwp-posts.js"></script>
@@ -49,6 +48,7 @@
 	<script src="/ngwp/common/api-endpoint.js"></script>
 	<script src="/ngwp/common/api-service.js"></script>
 	<script src="/ngwp/common/filters.js"></script>
+	<script src="/ngwp/common/page-factory.js"></script>
 
 </body>
 </html>
