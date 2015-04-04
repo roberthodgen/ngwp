@@ -74,17 +74,17 @@ module.exports = function(grunt) {
 				src: '**/*',
 				dest: 'dist/vendor/angular',
 				filter: 'isFile'
-			}, angular_route: {
-				expand: true,
-				cwd: 'node_modules/angular-route',
-				src: '**/*',
-				dest: 'dist/vendor/angular-route',
-				filter: 'isFile'
 			}, angular_ui_router: {
 				expand: true,
 				cwd: 'node_modules/angular-ui-router/release',
 				src: '**/*',
 				dest: 'dist/vendor/angular-ui-router',
+				filter: 'isFile'
+			}, angular_ui_router_extras: {
+				expand: true,
+				cwd: 'node_modules/ui-router-extras/release',
+				src: '**/*',
+				dest: 'dist/vendor/ui-router-extras',
 				filter: 'isFile'
 			}, angular_sanitize: {
 				expand: true,
