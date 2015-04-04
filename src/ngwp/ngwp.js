@@ -24,28 +24,16 @@
 			// $http.get().then() returns a promise
 			return $http.get('testStates.json').then(function (resp) {
 				angular.forEach(resp.data, function (fstate) {
-				// Register each state returned from $http.get() with $futureStateProvider
-				$futureStateProvider.futureState(fstate);
+					// Register each state returned from $http.get() with $futureStateProvider
+					$futureStateProvider.futureState(fstate);
 				});
 			});
 		};
 
 		// Register `default` type with the `stateFactory`
-		$futureStateProvider.stateFactory('state', function($q, $http, futureState) {
-			var deferred = $q.defer();
-
-			var fullState = {
-				name: futureState.name,
-				url: futureState.url,
-				template: '<h1>Test</h1>'
-			};
-
-			// Resolve the full state;
-			// can be done asynchronously
-			deferred.resolve(fullState);
-
-			return deferred.promise;
-		});
+		$futureStateProvider.stateFactory('state', ['stateFactory', 'futureState', function(stateFactory, futureState) {
+			return stateFactory(futureState);
+		}]);
 
 		$futureStateProvider.addResolve(loadAndRegisterFutureStates);
 	}]);
