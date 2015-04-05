@@ -263,6 +263,34 @@
 			return deferred.promise;
 		};
 
+		this.fetchRouteRules = function() {
+			return $http({
+				method: 'GET',
+				url: '/routeRules.json',
+				params: {}
+			}).then(function(response) {
+				// HTTP 200-299 Status
+				if (angular.isArray(response.data) && response.status === 200) {
+					console.log('[apiService] fetchRouteRules(): Fetch success.');
+					// Success
+					return response.data;
+				} else {
+					// Error
+					console.log('[apiService] fetchRouteRules(): Error reading response.');
+					return {
+						error: true
+					};
+				}
+			}, function(response) {
+				// Error
+				console.log('[apiService] fetchRouteRules(): Request error: '+response.status);
+				return {
+					error: true,
+					status: response.status
+				};
+			});
+		};
+
 		// Fetchf rom API Endpoint
 		this.fetchFromEndpoint = function(endpointUri, params) {
 			return $http({

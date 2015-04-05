@@ -1,0 +1,65 @@
+[
+  {
+    "url": "/seafood",
+    "name": "77737ede2d4bdbc7df8959060842746f",
+    "endpoint": "posts?post_type=events",
+    "template": "archive",
+
+    "og_endpoint": "index.php?post_type=events"
+  }, {
+    "url": "/seafood/page/{1:[0-9]{1,}}",
+    "name": "f740c592c959bd5c3e4bc72b93d189c1",
+    "endpoint": "posts?post_type=events&paged=<1>",
+    "template": "archive-events",
+
+    "og_endpoint": "index.php?post_type=events&paged=$matches[1]"
+  }, {
+    "url": "/category/{1:.+?}/feed/{2:feed|rdf|rss|rss2|atom}",
+    "name": "c",
+    "endpoint": "index.php?category_name=$matches[1]&feed=$matches[2]"
+  }, {
+    "url": "/category/{1:.+?}/{2:feed|rdf|rss|rss2|atom}",
+    "name": "d",
+    "endpoint": "index.php?category_name=$matches[1]&feed=$matches[2]"
+  }, {
+    "url": "/category/{1:.+?}",
+    "name": "e",
+    "endpoint": "index.php?category_name=$matches[1]"
+  }, {
+    "url": "/tag/{1:[^/]+}/feed/{2:feed|rdf|rss|rss2|atom}",
+    "name": "f",
+    "endpoint": "index.php?tag=$matches[1]&feed=$matches[2]"
+  }, {
+    "url": "/tag/{1:[^/]+}/{2:feed|rdf|rss|rss2|atom}",
+    "name": "g",
+    "endpoint": "index.php?tag=$matches[1]&feed=$matches[2]"
+  }, {
+    "url": "/tag/{1:[^/]+}",
+    "name": "h",
+    "endpoint": "index.php?tag=$matches[1]"
+  }, {
+    "url": "/type/{1:[^/]+}/feed/{2:feed|rdf|rss|rss2|atom}",
+    "name": "i",
+    "endpoint": "index.php?post_format=$matches[1]&feed=$matches[2]"
+  }, {
+    "url": "/type/{1:[^/]+}/{2:feed|rdf|rss|rss2|atom}",
+    "name": "j",
+    "endpoint": "index.php?post_format=$matches[1]&feed=$matches[2]"
+  }, {
+    "url": "/type/{1:[^/]+}",
+    "name": "k",
+    "endpoint": "index.php?post_format=$matches[1]"
+  }, {
+    "url": "/client-category/{1:[^/]+}/feed/{2:feed|rdf|rss|rss2|atom}",
+    "name": "l",
+    "endpoint": "index.php?client_category=$matches[1]&feed=$matches[2]"
+  }, {
+    "url": "/client-category/{1:[^/]+}/{2:feed|rdf|rss|rss2|atom}",
+    "name": "m",
+    "endpoint": "index.php?client_category=$matches[1]&feed=$matches[2]"
+  }, {
+    "url": "/client-category/{1:[^/]+}",
+    "name": "n",
+    "endpoint": "index.php?client_category=$matches[1]"
+  }
+]

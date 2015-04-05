@@ -18,28 +18,101 @@
 		'ngwp.pageFactory'
 	]);
 
+
+	app.config(['$urlMatcherFactoryProvider', function($urlMatcherFactoryProvider) {
+		$urlMatcherFactoryProvider.caseInsensitive(true);
+		$urlMatcherFactoryProvider.strictMode(false);
+	}]);
+
+
+	var ngwpStateFactory = function($http, $q, futureState) {
+		var deferred = $q.defer();
+
+		var fullState = {
+			name: futureState.name,
+			url: futureState.url,
+			templateProvider: function() {
+				var templateUrl = '/ngwp/templates/'+futureState.postTemplate+'.html';
+				console.log(templateUrl);
+
+				return $http({
+					method: 'GET',
+					url: templateUrl
+				}).then(function(response) {
+					return response.data;
+				});
+			}
+		};
+
+		// Resolve the full state;
+		// can be done asynchronously
+		deferred.resolve(fullState);
+
+		return deferred.promise;
+	};
+
+
 	app.config(['$futureStateProvider', function($futureStateProvider) {
 		// Loading states from .json file during runtime
-		var loadAndRegisterFutureStates = function ($http) {
-			// $http.get().then() returns a promise
-			return $http.get('testStates.json').then(function (resp) {
-				angular.forEach(resp.data, function (fstate) {
-					// Register each state returned from $http.get() with $futureStateProvider
-					$futureStateProvider.futureState(fstate);
-				});
+		var loadAndRegisterFutureStates = function ($http, $q) {
+			var deferred = $q.defer();
+			var http_request = $http({
+				method: 'GET',
+				url: '/routeRules.json',
+				params: {}
+			}).then(function(response) {
+				// HTTP 200-299 Status
+				if (angular.isArray(response.data) && response.status === 200) {
+					console.log('[apiService] fetchRouteRules(): Fetch success.');
+					// Success
+
+					angular.forEach(response.data, function(routeRule) {
+
+						if (angular.isString(routeRule.url)) {
+							$futureStateProvider.futureState({
+								url: routeRule.url,
+								name: routeRule.name,
+								type: 'state',
+								postTemplate: routeRule.template
+							});
+						}
+					});
+					deferred.resolve(true);
+				} else {
+					// Error
+					console.log('[apiService] fetchRouteRules(): Error reading response.');
+					deferred.reject();
+				}
+			}, function(response) {
+				// Error
+				console.log('[apiService] fetchRouteRules(): Request error: '+response.status);
+				deferred.reject();
 			});
+
+			return deferred.promise;
 		};
 
 		// Register `default` type with the `stateFactory`
-		$futureStateProvider.stateFactory('state', ['stateFactory', 'futureState', function(stateFactory, futureState) {
-			return stateFactory(futureState);
-		}]);
+		$futureStateProvider.stateFactory('state', ngwpStateFactory);
 
 		$futureStateProvider.addResolve(loadAndRegisterFutureStates);
 	}]);
 
 	app.config(['$stateProvider', function($stateProvider) {
 
+		$stateProvider.state({
+			name: 'test',
+			url: '/test',
+			templateProvider: function($http) {
+				return $http({
+					method: 'GET',
+					url: '/ngwp/templates/single.html'
+				}).then(function(response) {
+					console.log('hello');
+					return response.data;
+				});
+			}
+		});
 		
 
 	}]);
@@ -52,7 +125,7 @@
 		}
 	};
 
-	var loadingRoutes = 0;
+	// var loadingRoutes = 0;
 
 
 	// app.config(['$routeProvider', function($routeProvider) {
