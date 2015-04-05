@@ -25,33 +25,6 @@
 	}]);
 
 
-	var ngwpStateFactory = function($http, $q, futureState) {
-		var deferred = $q.defer();
-
-		var fullState = {
-			name: futureState.name,
-			url: futureState.url,
-			templateProvider: function() {
-				var templateUrl = '/ngwp/templates/'+futureState.postTemplate+'.html';
-				console.log(templateUrl);
-
-				return $http({
-					method: 'GET',
-					url: templateUrl
-				}).then(function(response) {
-					return response.data;
-				});
-			}
-		};
-
-		// Resolve the full state;
-		// can be done asynchronously
-		deferred.resolve(fullState);
-
-		return deferred.promise;
-	};
-
-
 	app.config(['$futureStateProvider', function($futureStateProvider) {
 		// Loading states from .json file during runtime
 		var loadAndRegisterFutureStates = function ($http, $q) {
@@ -73,7 +46,7 @@
 								url: routeRule.url,
 								name: routeRule.name,
 								type: 'state',
-								postTemplate: routeRule.template
+								data: routeRule.template
 							});
 						}
 					});
@@ -93,7 +66,9 @@
 		};
 
 		// Register `default` type with the `stateFactory`
-		$futureStateProvider.stateFactory('state', ngwpStateFactory);
+		$futureStateProvider.stateFactory('state', ['stateFactory', 'futureState', function(stateFactory, futureState) {
+			return stateFactory(futureState);
+		}]);
 
 		$futureStateProvider.addResolve(loadAndRegisterFutureStates);
 	}]);
