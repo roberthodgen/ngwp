@@ -46,7 +46,7 @@
 								url: routeRule.url,
 								name: routeRule.name,
 								type: 'state',
-								data: routeRule.template
+								template: routeRule.template
 							});
 						}
 					});
