@@ -72,8 +72,9 @@
 			// Attempt loading the FULL template
 			var cached_template = $templateCache.get(TEMPLATE_DIRECTORY + template + '.html');
 
-			if (!!cached_template) {
-				console.log('returning cached template.');
+			if (cached_template === false) {
+				deferred.reject(false);
+			} else if (!!cached_template) {
 				deferred.resolve(cached_template);
 				return deferred.promise;
 			}
@@ -85,6 +86,7 @@
 			}).then(function(response) {
 				deferred.resolve(response.data);
 			}, function(response) {
+				$templateCache.put(TEMPLATE_DIRECTORY + template + '.html', false);
 				deferred.reject(false);
 			});
 
