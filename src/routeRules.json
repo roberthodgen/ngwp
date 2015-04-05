@@ -51,5 +51,14 @@
     "url": "/client-category/{1:[^/]+}",
     "name": "n",
     "endpoint": "index.php?client_category=$matches[1]"
+  }, {
+    "url": "/{1:[^/]+}{2:/[0-9]+}?",
+    "name": "984fec59d35940a1357e0afaedd04a76",
+    "endpoint": "posts",
+    "params" : {
+      "1": "filter[name]",
+      "2": "filter[page]"
+    },
+    "template": "single"
   }
 ]
