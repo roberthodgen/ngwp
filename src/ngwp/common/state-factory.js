@@ -25,6 +25,12 @@
 						return response.data;
 					});
 					// return templateFactory(futureState.template);
+				}, controllerProvider: function(controllerForTemplateFactory) {
+					return controllerForTemplateFactory(futureState.data);
+				}, resolve: {
+					posts: ['apiService', function(apiService) {
+						return apiService.fetchPosts();
+					}]
 				}
 			};
 
@@ -70,5 +76,16 @@
 
 		};
 	}]);
+
+
+	app.factory('controllerForTemplateFactory', function() {
+		return function(string) {
+			if (string.lastIndexOf('single', 0) === 0) {
+				return 'singleCtrl';
+			} else if (string.lastIndexOf('archive', 0) === 0) {
+				return 'archiveCtrl';
+			}
+		};
+	});
 
 })();

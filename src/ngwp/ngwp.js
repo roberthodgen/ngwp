@@ -91,15 +91,6 @@
 	}]);
 
 
-	// var controllerForTemplate = function(string) {
-	// 	if (string.lastIndexOf('single', 0) === 0) {
-	// 		return 'singleCtrl';
-	// 	} else if (string.lastIndexOf('archive', 0) === 0) {
-	// 		return 'archiveCtrl';
-	// 	}
-	// };
-
-
 	// Enable HTML5-mode for $locationProvider
 	app.config(['$locationProvider', function($locationProvider) {
 		$locationProvider.html5Mode(true);
