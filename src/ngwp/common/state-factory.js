@@ -7,26 +7,37 @@
 			var deferred = $q.defer();
 
 			// console.log(futureState.template);
-			// console.log(futureState.name);
+			console.log('stateFactory manufacturing state with name: '+futureState.name);
 			// console.log(futureState.url);
 
 			var fullState = {
 				name: futureState.name,
 				url: futureState.url,
-				templateProvider: function($http) {
-					console.log('templateProvider');
-					var templateUrl = '/ngwp/templates/'+futureState.data+'.html';
-					console.log(templateUrl);
-					return $http({
-						method: 'GET',
-						url: templateUrl
-					}).then(function(response) {
-						console.log('Loaded Successfully!');
-						return response.data;
+				templateProvider: function($q, templateFactory) {
+					console.log('templateProvider called, attempt to use template: '+futureState.template);
+
+					var templateDeferred = $q.defer();
+
+					templateFactory(futureState.template).then(function(response) {
+						// HTTP 200-299 Status
+						templateDeferred.resolve(response.data);
+					}, function(response) {
+						// Error
+
+						// Try loading the gemeric...
+						templateFactory('archive').then(function(response) {
+							// HTTP 200-299 Status
+							templateDeferred.resolve(response.data);
+						}, function(response) {
+							// Error
+							templateDeferred.resolve('<h1>Template not found.</h1>');
+						});
 					});
+
+					return templateDeferred.promise;
 					// return templateFactory(futureState.template);
 				}, controllerProvider: function(controllerForTemplateFactory) {
-					return controllerForTemplateFactory(futureState.data);
+					return controllerForTemplateFactory(futureState.template);
 				}, resolve: {
 					posts: ['apiService', function(apiService) {
 						return apiService.fetchPosts();
@@ -49,31 +60,20 @@
 	app.factory('templateFactory', ['$http', '$templateCache', 'TEMPLATE_DIRECTORY', function($http, $templateCache, TEMPLATE_DIRECTORY) {
 		return function(template) {
 
-			template = 'single';
-
 			// return TEMPLATE_DIRECTORY + template + '.html';
 
 			// Attempt loading the FULL template
-			// var cached_template = $templateCache.get(TEMPLATE_DIRECTORY + template + '.html');
+			var cached_template = $templateCache.get(TEMPLATE_DIRECTORY + template + '.html');
 
-			// if (angular.isDefined(cached_template)) {
-			// 	return cached_template;
-			// }
+			if (!!cached_template) {
+				return cached_template;
+			}
 
 			return $http({
 				method: 'GET',
 				url: TEMPLATE_DIRECTORY + template + '.html',
 				cache: $templateCache
-			}).then(function(response) {
-				// HTTP 200-299 Status
-				console.log('HTTP request finished with status: '+response.status);
-				console.log(typeof response.data);
-				return response.data;
-			}, function(response) {
-				// Error
-				return 'Not Found';
 			});
-
 		};
 	}]);
 
