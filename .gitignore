@@ -31,3 +31,6 @@ bower_components
 
 # Silly Mac files
 .DS_Store
+
+# Build directory
+dist
