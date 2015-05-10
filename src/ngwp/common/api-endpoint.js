@@ -14,6 +14,6 @@
 	*	NOTE: Should always end in trailing slash!
 	*/
 
-	app.constant('API_ENDPOINT', 'http://wp-backend.hodgen.cc/wp-json/'); // Needs trailing slash
+	app.constant('API_ENDPOINT', 'http://192.168.55.128/wp-json/'); // Needs trailing slash
 
 })();

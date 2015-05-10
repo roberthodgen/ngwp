@@ -2,9 +2,11 @@
 
 	var app = angular.module('ngwp', [
 		'ngSanitize',
+		'ngResource',
 		'ui.router',		// Angular UI Router via https://github.com/angular-ui/ui-router
 		'ct.ui.router.extras.core',	// Angular UI Router Extras via https://github.com/christopherthielen/ui-router-extras; adds future states
 		'ct.ui.router.extras.future',	// Angular UI Router Extras via https://github.com/christopherthielen/ui-router-extras; adds future states
+		'ngwp.resources',
 		'ngwp.stateFactory',
 		'ngwp.rootCtrl',
 		'ngwp.blogCtrl',
