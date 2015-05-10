@@ -52,12 +52,20 @@
     "name": "n",
     "endpoint": "index.php?client_category=$matches[1]"
   }, {
-    "url": "/{1:[^/]+}{2:/[0-9]+}?",
-    "name": "984fec59d35940a1357e0afaedd04a76",
+    "url": "/:name",
+    "name": "1d2d1a41b3378bdeea054d8994138275",
     "endpoint": "posts",
     "params" : {
-      "1": "filter[name]",
-      "2": "filter[page]"
+      "name": "filter[name]"
+    },
+    "template": "single"
+  }, {
+    "url": "/:name/:page",
+    "name": "9d25d67935319c6cd191797ad40dbf64",
+    "endpoint": "posts",
+    "params" : {
+      "name": "filter[name]",
+      "page": "filter[page]"
     },
     "template": "single"
   }
