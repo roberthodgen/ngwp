@@ -1,4 +1,4 @@
-<h1>{{ post.title }}</h1>
+<h1>{{ post.title.rendered }}</h1>
 <ul class="list-inline">
 	<li><span class="glyphicon glyphicon-calendar"></span> {{ post.date | date:'mediumDate' }}</li>
 	<li><span class="glyphicon glyphicon-user"></span> {{ post.author.name }}</li>
@@ -17,6 +17,6 @@
 </ul>
 <hr>
 
-<div ng-bind-html="post.content"></div>
+<div ng-bind-html="post.content.rendered"></div>
 
 <ngwp-comments></ngwp-comments>

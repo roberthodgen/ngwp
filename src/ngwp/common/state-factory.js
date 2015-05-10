@@ -1,8 +1,8 @@
 (function() {
 
-	var app = angular.module('ngwp.stateFactory', []);
+	var app = angular.module('ngwp.stateFactory', ['ngwp.apiService']);
 
-	app.factory('stateFactory', ['$q', '$http', function($q, $http) {
+	app.factory('stateFactory', ['$q', function($q) {
 		return function(futureState) {
 			var deferred = $q.defer();
 
@@ -44,7 +44,9 @@
 			if (futureState.template.lastIndexOf('single', 0) === 0) {
 				// Single `post`
 				fullState.resolve.post = ['apiService', function(apiService) {
-					return apiService.fetchPostBySlug('hello-world');
+					return apiService.fetchFromEndpoint('wp/v2/posts', {
+						'filter[name]': 'hello-world'
+					});
 				}];
 			} else if (futureState.template.lastIndexOf('archive', 0) === 0) {
 				// Multiple `posts`

@@ -16,7 +16,7 @@
 				$scope.init = function() {
 					$scope.comments = [];
 
-					apiService.fetchCommentsByPostId($scope.post.ID).then(function(response) {
+					apiService.fetchCommentsByPostId($scope.post.id).then(function(response) {
 						if (!response.error) {
 							$scope.comments = response;
 						} else {

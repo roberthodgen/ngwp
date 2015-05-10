@@ -5,7 +5,7 @@
 	app.controller('singleCtrl', ['$scope', 'post', function($scope, post) {
 		$scope.init = function() {
 			console.log('[singleCtrl] $scope.init(): Called.');
-			$scope.post = post;
+			$scope.post = post[0];
 		};
 
 

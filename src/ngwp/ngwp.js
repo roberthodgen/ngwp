@@ -38,11 +38,10 @@
 			}).then(function(response) {
 				// HTTP 200-299 Status
 				if (angular.isArray(response.data) && response.status === 200) {
-					console.log('[apiService] fetchRouteRules(): Fetch success.');
 					// Success
+					console.log('[apiService] fetchRouteRules(): Fetch success.');
 
 					angular.forEach(response.data, function(routeRule) {
-
 						if (angular.isString(routeRule.url)) {
 							$futureStateProvider.futureState({
 								url: routeRule.url,
