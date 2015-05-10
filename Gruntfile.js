@@ -92,6 +92,12 @@ module.exports = function(grunt) {
 				src: '**/*',
 				dest: 'dist/vendor/angular-sanitize',
 				filter: 'isFile'
+			}, angular_resource: {
+				expand: true,
+				cwd: 'node_modules/angular-resource',
+				src: '**/*',
+				dest: 'dist/vendor/angular-resource',
+				filter: 'isFile'
 			}
 		}
 	});
