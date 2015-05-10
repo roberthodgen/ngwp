@@ -160,7 +160,10 @@
 			console.log('[apiService] fetchCommentsByPostId(): Called with `postId`: '+postId);
 			return $http({
 				method: 'GET',
-				url: API_ENDPOINT + 'posts/' + postId + '/comments'
+				url: API_ENDPOINT + 'wp/v2/comments',
+				params: {
+					post_id: postId
+				}
 			}).then(function(response) {
 				// HTTP 200-299 Status
 				if (angular.isObject(response.data) && response.status === 200) {
@@ -255,7 +258,7 @@
 					template: 'single',
 					endpoint: 'pages/about-2',
 					params: {
-						
+
 					}
 				}
 			]);
@@ -291,7 +294,7 @@
 			});
 		};
 
-		// Fetchf rom API Endpoint
+		// Fetch from API Endpoint
 		this.fetchFromEndpoint = function(endpointUri, params) {
 			return $http({
 				method: 'GET',
