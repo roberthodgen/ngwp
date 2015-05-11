@@ -9,6 +9,12 @@
 			$scope.config = {
 				pageTitle: 'ngwp'
 			};
+
+			$scope.$watch(function() {
+				return $scope.config.pageTitle;
+			}, function(newValue, oldValue) {
+				document.title = newValue;
+			});
 		};
 
 
