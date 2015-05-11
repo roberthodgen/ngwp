@@ -56,7 +56,7 @@
     "name": "1d2d1a41b3378bdeea054d8994138275",
     "endpoint": "posts",
     "params" : {
-      "name": "filter[name]"
+      "name": "name"
     },
     "template": "single"
   }, {
@@ -64,8 +64,8 @@
     "name": "9d25d67935319c6cd191797ad40dbf64",
     "endpoint": "posts",
     "params" : {
-      "name": "filter[name]",
-      "page": "filter[page]"
+      "name": "name",
+      "page": "page"
     },
     "template": "single"
   }
